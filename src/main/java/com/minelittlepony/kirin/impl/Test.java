@@ -2,7 +2,6 @@ package com.minelittlepony.kirin.impl;
 
 import com.minelittlepony.common.client.gui.element.Button;
 import com.minelittlepony.common.event.ScreenInitCallback;
-
 import net.fabricmc.api.ClientModInitializer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.TitleScreen;
@@ -23,5 +22,4 @@ public class Test implements ClientModInitializer {
             });
         }
     }
-
 }

@@ -76,13 +76,13 @@ public class GameGui extends Screen {
     }
 
     /**
-     * Determines whether the a key is currently pressed.
+     * Determines whether a key is currently pressed.
      *
      * @param key The GLFW keyCode to check
      * @return True if the key is pressed.
      */
     public static boolean isKeyDown(int key) {
-        return InputConstants.isKeyDown(Minecraft.getInstance().getWindow(), key);
+        return InputConstants.isKeyDown(key);
     }
 
     /**
