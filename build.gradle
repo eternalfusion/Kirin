@@ -24,11 +24,7 @@ dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     api "net.fabricmc:fabric-loader:${project.loader_version}"
 
-    api fabricApi.module("fabric-api-base", project.fabric_version)
-    api fabricApi.module("fabric-lifecycle-events-v1", project.fabric_version)
-    api fabricApi.module("fabric-key-mapping-api-v1", project.fabric_version)
-    api fabricApi.module("fabric-rendering-v1", project.fabric_version)
-    api fabricApi.module("fabric-transitive-access-wideners-v1", project.fabric_version)
+    // Kirin deliberately does not depend on Fabric API.
 }
 
 processResources {
@@ -37,8 +33,7 @@ processResources {
     filesMatching("fabric.mod.json") {
         expand "version": project.version.toString(),
                 "minecraftVersion": project.minecraft_version_range,
-                "loaderVersion": ">=${project.loader_version}",
-                "fabricVersion": ">=${project.fabric_version}"
+                "loaderVersion": ">=${project.loader_version}"
     }
 
     from 'LICENSE'

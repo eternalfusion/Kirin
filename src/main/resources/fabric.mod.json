@@ -25,8 +25,7 @@
   "depends": {
     "minecraft": "${minecraftVersion}",
     "fabricloader": "${loaderVersion}",
-    "java": ">=21",
-    "fabric-api": "${fabricVersion}"
+    "java": ">=21"
   },
   "custom": {
     "modmenu": {

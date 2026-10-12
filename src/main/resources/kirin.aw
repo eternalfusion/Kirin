@@ -9,3 +9,4 @@ accessible          class    net/minecraft/client/renderer/rendertype/RenderSetu
 
 accessible          field    net/minecraft/client/renderer/rendertype/RenderType       state                    Lnet/minecraft/client/renderer/rendertype/RenderSetup;
 accessible          field    net/minecraft/client/renderer/rendertype/RenderSetup      textures                 Ljava/util/Map;
+accessible          field    net/minecraft/client/gui/GuiGraphicsExtractor             guiRenderState           Lnet/minecraft/client/renderer/state/gui/GuiRenderState;
