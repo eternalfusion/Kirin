@@ -5,7 +5,6 @@ import net.minecraft.client.Minecraft;
 /**
  * Callback for the first tick on the client.
  */
-@Deprecated
 public interface ClientReadyCallback {
 
     Event<ClientReadyCallback> EVENT = EventFactory.createArrayBacked(ClientReadyCallback.class, listeners -> client -> {
