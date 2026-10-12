@@ -1,0 +1,28 @@
+import com.minelittlepony.build.AccessParity
+
+abstract class AccessParityExtension {
+    abstract RegularFileProperty getAccessWidener()
+    abstract RegularFileProperty getAccessTransformer()
+}
+
+def extension = extensions.create('accessParity', AccessParityExtension)
+
+def checkAccessParity = tasks.register('checkAccessParity') {
+    group = 'verification'
+    description = 'Verifies that the access widener and the access transformer target the same set of members.'
+    inputs.files(extension.accessWidener, extension.accessTransformer)
+    doLast {
+        def aw = AccessParity.parseAccessWidener(extension.accessWidener.get().asFile.readLines('UTF-8'))
+        def at = AccessParity.parseAccessTransformer(extension.accessTransformer.get().asFile.readLines('UTF-8'))
+        def problems = AccessParity.diff(aw, at)
+        if (!problems.isEmpty()) {
+            throw new GradleException("Access widener and access transformer differ:\n  " + problems.join('\n  '))
+        }
+    }
+}
+
+plugins.withId('base') {
+    tasks.named('check') {
+        dependsOn(checkAccessParity)
+    }
+}
