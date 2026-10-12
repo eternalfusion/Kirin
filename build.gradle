@@ -4,12 +4,17 @@ buildscript {
     }
 }
 plugins {
-    id "net.fabricmc.fabric-loom" version '1.17-SNAPSHOT'
+    id "net.fabricmc.fabric-loom" version '1.18.1'
     id 'maven-publish'
     id 'com.modrinth.minotaur' version '2.+'
     id 'org.ajoberstar.reckon' version '0.13.1'
 }
 apply plugin: 'io.github.dexman545.outlet'
+
+reckon {
+    scopeFromProp()
+    stageFromProp('beta', 'rc', 'final')
+}
 
 java {
     toolchain {
@@ -27,11 +32,6 @@ base {
 
 loom {
     accessWidenerPath = file('src/main/resources/kirin.aw')
-}
-
-reckon {
-    scopeFromProp()
-    stageFromProp('beta', 'rc', 'final')
 }
 
 outlet {
