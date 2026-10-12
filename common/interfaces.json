@@ -1,0 +1,5 @@
+{
+  "net/minecraft/client/gui/screens/Screen": [
+    "com/minelittlepony/common/client/gui/IViewRootDefaultImpl"
+  ]
+}

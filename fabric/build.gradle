@@ -1,0 +1,57 @@
+plugins {
+    id 'multiloader-loader'
+    id 'net.fabricmc.fabric-loom'
+}
+
+dependencies {
+    minecraft("com.mojang:minecraft:${minecraft_version}")
+    implementation("net.fabricmc:fabric-loader:${fabric_loader_version}")
+    // Kirin deliberately does not depend on Fabric API.
+}
+
+loom {
+    accessWidenerPath.set(project(":${mod_id}-common").file('src/main/resources/kirin.aw'))
+    runs {
+        configureEach {
+            vmArg '-Dkirin.debug=true'
+        }
+        client {
+            client()
+            setConfigName('Fabric Client')
+            ideConfigGenerated(true)
+            runDir('runs/client')
+        }
+        server {
+            server()
+            setConfigName('Fabric Server')
+            ideConfigGenerated(true)
+            runDir('runs/server')
+            programArgs '--nogui'
+        }
+    }
+}
+
+// Loom run settings only accept eagerly evaluated JVM arguments, so the smoke test flag is passed lazily through the run task.
+tasks.named('runClient') {
+    def smoketest = providers.systemProperty('kirin.smoketest').orElse('false')
+    jvmArgumentProviders.add({ ["-Dkirin.smoketest=${smoketest.get()}".toString()] } as CommandLineArgumentProvider)
+}
+
+// Implement mcgradleconventions loader attribute
+def loaderAttribute = Attribute.of('io.github.mcgradleconventions.loader', String)
+['apiElements', 'runtimeElements', 'sourcesElements', 'includeInternal', 'modCompileClasspath'].each { variant ->
+    configurations.named(variant) {
+        attributes {
+            attribute(loaderAttribute, 'fabric')
+        }
+    }
+}
+sourceSets.configureEach {
+    [it.compileClasspathConfigurationName, it.runtimeClasspathConfigurationName].each { variant->
+        configurations.named(variant) {
+            attributes {
+                attribute(loaderAttribute, 'fabric')
+            }
+        }
+    }
+}

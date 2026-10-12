@@ -23,9 +23,9 @@
   "accessWidener": "kirin.aw",
   "environment": "*",
   "depends": {
-    "minecraft": "${minecraftVersion}",
-    "fabricloader": "${loaderVersion}",
-    "java": ">=21"
+    "minecraft": "~26.3",
+    "fabricloader": ">=${fabric_loader_version}",
+    "java": ">=25"
   },
   "custom": {
     "modmenu": {

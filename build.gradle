@@ -1,53 +1,6 @@
 plugins {
-    id "net.fabricmc.fabric-loom" version '1.18.1'
-}
-
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(25)
-    }
-    withSourcesJar()
-}
-
-group = project.group
-description = project.displayname
-
-base {
-    archivesName = project.name
-}
-
-loom {
-    accessWidenerPath = file('src/main/resources/kirin.aw')
-}
-
-dependencies {
-    minecraft "com.mojang:minecraft:${project.minecraft_version}"
-    api "net.fabricmc:fabric-loader:${project.loader_version}"
-
-    // Kirin deliberately does not depend on Fabric API.
-}
-
-processResources {
-    inputs.property "version", project.version.toString()
-
-    filesMatching("fabric.mod.json") {
-        expand "version": project.version.toString(),
-                "minecraftVersion": project.minecraft_version_range,
-                "loaderVersion": ">=${project.loader_version}"
-    }
-
-    from 'LICENSE'
-}
-
-tasks.withType(JavaCompile) {
-    options.encoding = "UTF-8"
-}
-
-dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.12.2'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-}
-
-test {
-    useJUnitPlatform()
+    // see https://maven.fabricmc.net/fabric-loom/fabric-loom.gradle.plugin/maven-metadata.xml for new versions
+    id 'net.fabricmc.fabric-loom' version '1.18.1' apply false
+    // see https://projects.neoforged.net/neoforged/moddevgradle for new versions
+    id 'net.neoforged.moddev' version '2.0.147' apply false
 }
