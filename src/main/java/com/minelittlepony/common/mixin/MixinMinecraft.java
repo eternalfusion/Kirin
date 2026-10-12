@@ -3,6 +3,7 @@ package com.minelittlepony.common.mixin;
 import com.minelittlepony.common.client.gui.ITickableElement;
 import com.minelittlepony.common.client.gui.IViewRoot;
 import com.minelittlepony.common.client.gui.dimension.Bounds;
+import com.minelittlepony.common.event.ClientReadyCallback;
 import com.minelittlepony.common.event.ScreenInitCallback;
 import com.minelittlepony.common.util.GamePaths.AssetsDirProvider;
 
@@ -52,6 +53,11 @@ abstract class MixinMinecraft implements AssetsDirProvider {
             bounds.height = client.getWindow().getGuiScaledHeight();
             ScreenInitCallback.EVENT.invoker().init(screen, screen);
         }
+    }
+
+    @Inject(method = "tick()V", at = @At("RETURN"))
+    private void onClientTick(CallbackInfo info) {
+        ClientReadyCallback.Handler.onClientTick((Minecraft)(Object)this);
     }
 
     @Inject(method = "runTick(Z)V", at = @At("HEAD"))

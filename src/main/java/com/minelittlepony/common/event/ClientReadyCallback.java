@@ -1,10 +1,9 @@
 package com.minelittlepony.common.event;
 
-import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.client.Minecraft;
 
 /**
- * Callback for the first tick on the client. Call {@link Handler#register()} to register
+ * Callback for the first tick on the client.
  */
 @Deprecated
 public interface ClientReadyCallback {
@@ -17,31 +16,28 @@ public interface ClientReadyCallback {
 
     void onClientPostInit(Minecraft client);
 
-    class Handler implements ClientTickEvents.EndTick  {
+    class Handler {
 
-        private static Handler instance;
-
-        private boolean firstTick = true;
+        private static boolean firstTick = true;
 
         private Handler() {
         }
 
         /**
-         * Call this at least once to register the base event.
+         * No longer required: the event is fired by Kirin itself at the end of the first client tick.
+         * Kept for compatibility.
          */
+        @Deprecated
         public static void register() {
-            // make sure to only register once
-            if (instance == null) {
-                instance = new Handler();
-                ClientTickEvents.END_CLIENT_TICK.register(instance);
-            }
         }
 
-        @Override
-        public void onEndTick(Minecraft client) {
+        /**
+         * Called at the end of every client tick. Fires {@link ClientReadyCallback#EVENT} on the first call only.
+         */
+        public static void onClientTick(Minecraft client) {
             if (firstTick) {
-                ClientReadyCallback.EVENT.invoker().onClientPostInit(client);
                 firstTick = false;
+                ClientReadyCallback.EVENT.invoker().onClientPostInit(client);
             }
         }
     }
