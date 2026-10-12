@@ -8,8 +8,6 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 import io.netty.buffer.ByteBuf;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.network.codec.ByteBufCodecs;
@@ -168,7 +166,6 @@ public class Bounds {
      * Draws a coloured rectangle over the area covered by this bounds.
      * Useful for debugging.
      */
-    @Environment(EnvType.CLIENT)
     public void draw(GuiGraphicsExtractor context, int tint) {
         context.fill(left, top, left + width, top + height, tint);
     }
@@ -176,7 +173,6 @@ public class Bounds {
     /**
      * Applies this bounds' offset as a translation to the passed in matrix stack.
      */
-    @Environment(EnvType.CLIENT)
     public void translate(PoseStack matrices) {
         matrices.translate(left, top, 0);
     }
@@ -184,7 +180,6 @@ public class Bounds {
     /**
      * Applies this bounds' offset as a translation to the passed in matrix stack.
      */
-    @Environment(EnvType.CLIENT)
     public void translate(Matrix3x2fStack matrices) {
         matrices.translate(left, top);
     }
@@ -193,12 +188,10 @@ public class Bounds {
      * Sets this bounds as the current scissor bounds for drawing
      * @param context
      */
-    @Environment(EnvType.CLIENT)
     public void scissor(GuiGraphicsExtractor context) {
         context.enableScissor(left, top, right(), bottom());
     }
 
-    @Environment(EnvType.CLIENT)
     public void debugMeasure(GuiGraphicsExtractor context) {
         Window window = Minecraft.getInstance().getWindow();
         context.fill(left, -1000, left + 1, window.getGuiScaledHeight() * 9, 0xFFFFFFFF);
