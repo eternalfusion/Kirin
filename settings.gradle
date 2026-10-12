@@ -23,6 +23,7 @@ plugins {
 }
 
 rootProject.name = 'kirin'
-include('common', 'fabric')
+include('common', 'fabric', 'neoforge')
 project(':common').name = 'kirin-common'
 project(':fabric').name = 'kirin-fabric'
+project(':neoforge').name = 'kirin-neoforge'
