@@ -1,13 +1,14 @@
 package com.minelittlepony.common.util;
 
-import net.fabricmc.loader.api.FabricLoader;
+import com.minelittlepony.common.platform.Platform;
+
 import net.minecraft.client.Minecraft;
 import java.nio.file.Path;
 
 /**
  * Provides access to all of the basic paths needed to interact with the game.
  * <p>
- * Some of these are not properly provided by FabricLoader, or are provided, but use
+ * Some of these are not properly provided by the mod loader, or are provided, but use
  * discouraged methods of interacting with the filesystem.
  *
  * @author     Sollace
@@ -20,14 +21,14 @@ public class GamePaths {
      * Gets the current game (root) direction as a Path.
      */
     public static Path getGameDirectory() {
-        return FabricLoader.getInstance().getGameDir();
+        return Platform.get().getGameDirectory();
     }
 
     /**
      * Gets the current game config direction as a Path.
      */
     public static Path getConfigDirectory() {
-        return FabricLoader.getInstance().getConfigDir();
+        return Platform.get().getConfigDirectory();
     }
 
     /**
