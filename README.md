@@ -74,15 +74,15 @@ Loader projects depend on the loader specific artifact and bundle it into their 
 ```groovy
 // Fabric (Loom)
 dependencies {
-    implementation 'com.minelittlepony:kirin-fabric:1.22.2'
-    include 'com.minelittlepony:kirin-fabric:1.22.2'
+    implementation 'com.minelittlepony:kirin-fabric:1.22.2+26.3'
+    include 'com.minelittlepony:kirin-fabric:1.22.2+26.3'
 }
 
 // NeoForge (ModDevGradle)
 dependencies {
-    implementation 'com.minelittlepony:kirin-neoforge:1.22.2'
-    jarJar('com.minelittlepony:kirin-neoforge:[1.22.2,)')
+    implementation 'com.minelittlepony:kirin-neoforge:1.22.2+26.3'
+    jarJar('com.minelittlepony:kirin-neoforge:[1.22.2+26.3,)')
 }
 ```
 
-Projects that share code between loaders (a `common` project) may only use `com.minelittlepony:kirin-common:1.22.2` as `compileOnly`. Never put `kirin-common` on a runtime classpath: it carries `kirin.mixin.json`, `kirin.aw` and the access transformer, which must only be loaded through the loader specific jar.
+Projects that share code between loaders (a `common` project) may only use `com.minelittlepony:kirin-common:1.22.2+26.3` as `compileOnly`. Never put `kirin-common` on a runtime classpath: it carries `kirin.mixin.json`, `kirin.aw` and the access transformer, which must only be loaded through the loader specific jar.
