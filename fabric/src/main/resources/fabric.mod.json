@@ -4,7 +4,7 @@
   "version": "${version}",
   "name": "Kirin UI",
   "description": "Embedded common code used across several Mine Little Pony projects to create their GUIs.",
-  "authors": [ "Sollace" ],
+  "authors": [ "Sollace", "eternalfusion (neoforge)" ],
   "contact": {
     "homepage": "https://minelittlepony-mod.com/",
     "sources": "https://github.com/MineLittlePony/Kirin",
