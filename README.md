@@ -1,13 +1,14 @@
 # Kirin UI
 
- [![Current Version](https://img.shields.io/github/v/release/MineLittlePony/Kirin)](https://github.com/MineLittlePony/Kirin/releases/latest)
-[![Build Status](https://github.com/MineLittlePony/Kirin/actions/workflows/gradle-build.yml/badge.svg)](https://github.com/MineLittlePony/Kirin/actions/workflows/gradle-build.yml)
-![License](https://img.shields.io/github/license/MineLittlePony/Kirin)
+[![Build Status](https://github.com/eternalfusion/Kirin/actions/workflows/gradle-build.yml/badge.svg)](https://github.com/eternalfusion/Kirin/actions/workflows/gradle-build.yml)
+![License](https://img.shields.io/github/license/eternalfusion/Kirin)
 
 
 Embedded common code used across several Mine Little Pony projects to create their GUIs.
 
 https://minelittlepony-mod.com
+
+This is a fork of [MineLittlePony/Kirin](https://github.com/MineLittlePony/Kirin) that builds Kirin for both Fabric and NeoForge from one source tree. All credit for the original work goes to its authors; the NeoForge port is by [eternalfusion](https://github.com/eternalfusion). Please report problems with this fork [here](https://github.com/eternalfusion/Kirin/issues), not to the original project.
 
 ## Building
 

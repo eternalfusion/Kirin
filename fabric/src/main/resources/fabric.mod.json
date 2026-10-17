@@ -7,8 +7,8 @@
   "authors": [ "Sollace", "eternalfusion (neoforge)" ],
   "contact": {
     "homepage": "https://minelittlepony-mod.com/",
-    "sources": "https://github.com/MineLittlePony/Kirin",
-    "issues": "https://github.com/MineLittlePony/Kirin/issues"
+    "sources": "https://github.com/eternalfusion/Kirin",
+    "issues": "https://github.com/eternalfusion/Kirin/issues"
   },
   "mixins": [
     "kirin.mixin.json"
