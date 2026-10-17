@@ -86,3 +86,14 @@ dependencies {
 ```
 
 Projects that share code between loaders (a `common` project) may only use `com.minelittlepony:kirin-common:1.22.2+26.3` as `compileOnly`. Never put `kirin-common` on a runtime classpath: it carries `kirin.mixin.json`, `kirin.aw` and the access transformer, which must only be loaded through the loader specific jar.
+
+## Versions and releases
+
+The version in `gradle.properties` has the form `<version>+<Minecraft version>`, for example `1.22.2+26.3`. To publish a release, tag the commit on `main` with `v` followed by the version, and push only that tag:
+
+```
+git tag -a v1.22.2+26.3 -m "Kirin 1.22.2+26.3"
+git push origin v1.22.2+26.3
+```
+
+The Release workflow checks that the tag matches `gradle.properties`, builds the Fabric and NeoForge jars and publishes them as a GitHub release. Do not use `git push --tags`: a clone that has the original project as a remote also has its tags.
